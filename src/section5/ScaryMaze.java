@@ -1,4 +1,4 @@
-package day5;
+package section5;
 
 import java.applet.AudioClip;
 import java.awt.Color;
@@ -18,55 +18,57 @@ import javax.swing.JPanel;
 import javax.swing.SwingUtilities;
 
 public class ScaryMaze extends JPanel implements Runnable, MouseMotionListener {
-	
+
 	BufferedImage maze;
 	final int frameWidth = 800;
-	final int frameHeight =600 ;
+	final int frameHeight = 600;
 
 	ScaryMaze() throws Exception {
-		//1. Use this online tool to make a maze image and drop it into your day5 package: http://pixlr.com/editor/
+		// 1. Use this online tool to make a maze image and drop it into your day5
+		// package: http://pixlr.com/editor/
 		maze = ImageIO.read(getClass().getResource("Scarymaze.jpg"));
-		//2. set the mouse pointer to the start of your maze using:
+		// 2. set the mouse pointer to the start of your maze using:
 		new Robot().mouseMove(1, 460);
-		
-		//3. add a mouse motion listener using:
+
+		// 3. add a mouse motion listener using:
 		addMouseMotionListener(this);
-		
+
 	}
-
-
 
 	@Override
 	public void mouseMoved(MouseEvent e) {
 		int mouseX = e.getX();
 		int mouseY = e.getY();
 		int mouseColor = maze.getRGB(mouseX, mouseY);
-		//4. print the mouseColor variable to see what color the mouse is touching
-System.out.println(mouseColor);
-		//5. make a variable to hold the background color. 
-int background = -1;
+		// 4. print the mouseColor variable to see what color the mouse is touching
+		System.out.println(mouseColor);
+		// 5. make a variable to hold the background color.
+		int background = -16777216;
 
-		//6. if the mouse falls off the path (if it is on the background)
-		if(mouseColor==background) {
-				// call the scare method
-		scare();}
-		//10. if the mouse is on the end color
-			if(mouseColor==-131072) {
+		// 6. if the mouse falls off the path (if it is on the background)
+		if (mouseColor == background) {
+			// call the scare method
+			scare();
+		}
+		// 10. if the mouse is on the end color
+		if (mouseColor == -131072) {
 			JOptionPane.showMessageDialog(null, "You Won");
-		}		// pop up a message to tell them they won
-		
+		} // pop up a message to tell them they won
 
 	}
 
 	private void scare() {
 		System.out.println("BOO!");
-		//7. find a scary sound and put it in the day5 package where you put your maze picture. You can find a sound on freesound.org. Log in as leagueofamazing/code4life.
-		AudioClip sound = JApplet.newAudioClip(getClass().getResource("cringeworthy.wav"));
-		
-		//8. play the scary sound. Hint: type "sound" and then a period.		
-		sound.play();
-		//9. drop an image into your day5 package, and use the showScaryImage method to scare your victim!
+		// 7. find a scary sound and put it in the day5 package where you put your maze
+		// picture. You can find a sound on freesound.org. Log in as
+		// leagueofamazing/code4life.
+		AudioClip sound = JApplet.newAudioClip(getClass().getResource("130325__dianadesim__lame-boo.wav"));
 
+		// 8. play the scary sound. Hint: type "sound" and then a period.
+		sound.play();
+		// 9. drop an image into your day5 package, and use the showScaryImage method to
+		// scare your victim!
+showScaryImage("raf,750x1000,075,t,fafafa_ca443f4786.jpg");
 	}
 
 	private void showScaryImage(String imageName) {
@@ -99,9 +101,7 @@ int background = -1;
 	}
 
 	@Override
-	public void mouseDragged(MouseEvent e) {}
+	public void mouseDragged(MouseEvent e) {
+	}
 
 }
-
-
-
